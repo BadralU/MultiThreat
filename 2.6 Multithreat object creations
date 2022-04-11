@@ -1,0 +1,44 @@
+public class Solution implements Runnable{
+    public static volatile List<Thread> list = new ArrayList<>(5);
+
+    public static void main(String[] args) {
+        //write your code here
+        Solution s = new Solution();
+
+
+        com.codegym.task.task16.task1603.Solution.SpecialThread object1 = new com.codegym.task.task16.task1603.Solution.SpecialThread();
+        com.codegym.task.task16.task1603.Solution.SpecialThread object2 = new com.codegym.task.task16.task1603.Solution.SpecialThread();
+        com.codegym.task.task16.task1603.Solution.SpecialThread object3 = new com.codegym.task.task16.task1603.Solution.SpecialThread();
+        com.codegym.task.task16.task1603.Solution.SpecialThread object4 = new com.codegym.task.task16.task1603.Solution.SpecialThread();
+        com.codegym.task.task16.task1603.Solution.SpecialThread object5 = new com.codegym.task.task16.task1603.Solution.SpecialThread();
+
+
+        Thread object6 = new Thread(object1);
+        Thread object7 = new Thread(object2);
+        Thread object8 = new Thread(object3);
+        Thread object9 = new Thread(object4);
+        Thread object10 = new Thread(object5);
+
+        
+        list.add(object6);
+        list.add(object7);
+        list.add(object8);
+        list.add(object9);
+        list.add(object10);
+
+
+    }
+
+    @Override
+    public void run() {
+
+    }
+
+    public static class SpecialThread implements Runnable {
+
+
+        public void run() {
+            System.out.println("This is the run method inside SpecialThread");
+        }
+    }
+}

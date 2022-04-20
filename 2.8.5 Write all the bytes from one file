@@ -1,0 +1,20 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        FileInputStream inputStream = new FileInputStream("c:/data.txt");
+        // Create a stream to write bytes to a file
+        FileOutputStream outputStream = new FileOutputStream("c:/result.txt");
+
+        byte[] buffer = new byte[inputStream.available()];
+        if(inputStream.available() > 0) {
+            // Read the entire file in one batch
+            int count = inputStream.read(buffer);
+            outputStream.write(buffer, 0, count);
+        }
+
+        inputStream.close();
+        outputStream.close();
+    }
+}

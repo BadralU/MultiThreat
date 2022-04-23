@@ -1,0 +1,19 @@
+public class Solution {
+
+    public static void main(String[] args) throws IOException {
+        int total = 0;
+        int space = 0;
+        try (FileReader fileReader = new FileReader(args[0])) {
+            while (fileReader.ready()) {
+                int readedChar = fileReader.read();
+                total++;
+                if (readedChar == (int) ' ')
+                    space++;
+            }
+        }
+        if (total != 0) {
+            double result = (double) space / total * 100;
+            System.out.printf("%.2f", result);
+        }
+    }
+}

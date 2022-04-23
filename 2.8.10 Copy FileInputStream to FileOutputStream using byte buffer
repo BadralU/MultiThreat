@@ -1,0 +1,13 @@
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        try (FileOutputStream file1 = new FileOutputStream(reader.readLine()); FileInputStream file2 = new FileInputStream(reader.readLine()); FileInputStream file3 = new FileInputStream(reader.readLine())) {
+              byte buffer[] = new byte[file2.available()];
+              int count = file2.read(buffer);
+              file1.write(buffer,0, count);
+              buffer = new byte[file3.available()];
+              int count2 = file3.read(buffer);
+              file1.write(buffer, 0, count2);
+        }
+    }
+}

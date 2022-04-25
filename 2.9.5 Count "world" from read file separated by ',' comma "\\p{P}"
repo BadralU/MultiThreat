@@ -1,0 +1,25 @@
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        String fileName = null;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            fileName = reader.readLine();
+        }
+
+        StringBuilder sbText = new StringBuilder();
+        try (FileReader fileReader = new FileReader(fileName)) {
+            char currentChar;
+            while (fileReader.ready()) {
+                currentChar = (char) fileReader.read();
+               sbText.append(currentChar);
+            }
+        }
+        int count = 0;
+        String replacedString = sbText.toString().replaceAll("\\p{P}", " ").replaceAll("\\s", " ");
+        for(String x : replacedString.split(" ")){
+            if (x.equals("world")){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}

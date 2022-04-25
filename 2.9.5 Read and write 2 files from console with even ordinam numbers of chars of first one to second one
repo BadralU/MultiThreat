@@ -1,0 +1,23 @@
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        String firstFile;
+        String secondFile;
+
+        String secondString = "";
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            firstFile = reader.readLine();
+            secondFile = reader.readLine();
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+        try (FileReader fileReader = new FileReader(firstFile)) {
+            while (fileReader.ready()) {
+                list.add(fileReader.read());
+            }
+        }
+        try (FileWriter writer = new FileWriter(secondFile)) {
+            for (int i = 1; i < firstFile.length(); i += 2) {
+                writer.write((byte) (int) list.get(i));
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        String file1, file2;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            file1 = reader.readLine();
+            file2 = reader.readLine();
+        }
+        ArrayList<String> fileContent = new ArrayList<>();
+        try (BufferedReader inputFileReader = new BufferedReader(new FileReader(file1))) {
+            while (inputFileReader.ready()) {
+                fileContent.add(inputFileReader.readLine());
+            }
+        }
+        try (BufferedWriter outputFileWriter = new BufferedWriter(new FileWriter(file2))) {
+            for (String s : fileContent) {
+                outputFileWriter.write(s.replaceAll("\\.", "!"));
+            }
+        }
+    }
+}

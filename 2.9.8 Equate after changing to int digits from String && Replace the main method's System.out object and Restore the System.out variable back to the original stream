@@ -1,0 +1,33 @@
+public class Solution {
+    public static TestString testString = new TestString();
+
+    public static void main(String[] args) {
+        PrintStream consoleOutput = System.out;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream stream = new PrintStream(byteArrayOutputStream);
+        System.setOut(stream);
+        testString.printSomething();
+        System.setOut(consoleOutput);
+
+        String temp = byteArrayOutputStream.toString();
+
+        String[] resultArray = temp.split(" ");
+        int firstElement = Integer.parseInt(resultArray[0]);
+        int secondElement = Integer.parseInt(resultArray[2]);
+        int equationResult;
+
+        if (resultArray[1].trim().equals("+"))
+            equationResult = firstElement + secondElement;
+        else if (resultArray[1].trim().equals("-"))
+            equationResult = firstElement - secondElement;
+        else
+            equationResult = firstElement * secondElement;
+        System.out.println(firstElement + " " + resultArray[1] + " " + secondElement + " = " + equationResult);
+    }
+
+    public static class TestString {
+        public void printSomething() {
+            System.out.println("3 + 6 = ");
+        }
+    }
+}

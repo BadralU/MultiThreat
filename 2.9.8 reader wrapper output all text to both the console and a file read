@@ -1,0 +1,31 @@
+public class Solution {
+    public static TestString testString = new TestString();
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String file1 = reader.readLine();
+        reader.close();
+        
+        PrintStream consoleOutput = System.out;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        
+        PrintStream stream = new PrintStream(byteArrayOutputStream);
+        System.setOut(stream);
+        
+        testString.printSomething();
+        
+        FileOutputStream fileOutputStream = new FileOutputStream(file1);
+        fileOutputStream.write(byteArrayOutputStream.toByteArray());
+        fileOutputStream.close();
+        
+        System.setOut(consoleOutput);
+        System.out.println(byteArrayOutputStream.toString());
+        
+    }
+
+    public static class TestString {
+        public void printSomething() {
+            System.out.println("This is text for testing");
+        }
+    }
+}

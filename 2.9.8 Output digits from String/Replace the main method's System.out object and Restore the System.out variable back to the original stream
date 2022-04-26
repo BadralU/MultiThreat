@@ -1,0 +1,23 @@
+public class Solution {
+    public static TestString testString = new TestString();
+
+    public static void main(String[] args) {
+        PrintStream consoleStream = System.out;
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream stream = new PrintStream(byteArrayOutputStream);
+        System.setOut(stream);
+        String temp;
+        testString.printSomething();
+
+        System.setOut(consoleStream);
+        temp = byteArrayOutputStream.toString();
+        temp = temp.replaceAll("\\D+", "");
+        System.out.println(temp);
+    }
+
+    public static class TestString {
+        public void printSomething() {
+            System.out.println("This 1 text 23 is 4 f5-6or7 tes8ting");
+        }
+    }
+}
